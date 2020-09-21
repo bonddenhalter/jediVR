@@ -7,23 +7,26 @@ public class CameraScript : MonoBehaviour
 
     public GameObject guard;
     private Vector3 prevPos;
-    private Vector3 prevRot;
     private bool mirror = false; //if true, guard will match instead of mirror
     private bool trackRot = true;
     private bool trackPos = true;
     private Vector3 playerOrigin = new Vector3(3.8f, 1f, 2.3f);
     private Vector3 guardOrigin = new Vector3(-0.2f, 1f, 2.3f);
+    private Camera headsetCamera;
 
     // Start is called before the first frame update
     void Start()
     {
-        prevPos = this.transform.position;
-        prevRot = this.transform.eulerAngles;
+        headsetCamera = GameObject.Find("CenterEyeAnchor").GetComponentInChildren<Camera>();
+        prevPos = headsetCamera.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        Vector3 playerPos = headsetCamera.transform.position;
+        Vector3 playerRot = headsetCamera.transform.eulerAngles;
+
         if (Input.GetKeyDown(KeyCode.Tab)) //move player back to origin
         {
             this.GetComponent<OVRPlayerController>().enabled = false;
@@ -43,22 +46,7 @@ public class CameraScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M)) //switch between mirroring/matching
         {
             mirror = !mirror;
-
-            //move cube to match new mode
-            Vector3 playerDistFromOrigin = this.transform.position - playerOrigin;
-            Vector3 playerRotation = this.transform.eulerAngles;
-            Vector3 guardDistFromOrigin = guard.transform.position - guardOrigin;
-
-            if (mirror)
-            {
-                guard.transform.Translate(-guardDistFromOrigin - playerDistFromOrigin, Space.World);
-                guard.transform.Rotate(-guard.transform.eulerAngles - playerRotation, Space.World);
-            }
-            else //match
-            {
-                guard.transform.Translate(playerDistFromOrigin - guardDistFromOrigin, Space.World);
-                guard.transform.Rotate(playerRotation - guard.transform.eulerAngles, Space.World);
-            }
+            resetGuardPosition(playerPos, playerRot);
         }
 
         if (Input.GetKeyDown(KeyCode.O)) //toggle rotation tracking - I decided to make this "O" since R moves the camera
@@ -69,21 +57,24 @@ public class CameraScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P)) //toggle position tracking
         {
             trackPos = !trackPos;
+            if (trackPos)
+            {
+                resetGuardPosition(playerPos, playerRot);
+            }
         }
 
         //update guard position
-        Vector3 positionChange = this.transform.position - prevPos;
-        Vector3 rotChange = this.transform.eulerAngles - prevRot;
+        Vector3 positionChange = playerPos - prevPos;
 
         if (mirror) //guard mirroring
         {
             if (trackPos)
             {
-                guard.transform.Translate(-positionChange, Space.World);
+                guard.transform.Translate(new Vector3(-positionChange[0], positionChange[1], positionChange[2]), Space.World);
             }
             if (trackRot)
             {
-                guard.transform.Rotate(-rotChange, Space.World);
+                guard.transform.rotation = Quaternion.Euler(new Vector3(playerRot[0], -playerRot[1], -playerRot[2]));
             }
         }
         else //guard matching
@@ -94,12 +85,30 @@ public class CameraScript : MonoBehaviour
             }
             if (trackRot)
             {
-                guard.transform.Rotate(rotChange, Space.World);    
+                guard.transform.rotation = Quaternion.Euler(playerRot);
             }
         }
 
-        prevPos = this.transform.position;
-        prevRot = this.transform.eulerAngles;
+        prevPos = playerPos;
         
     }
+
+    void resetGuardPosition(Vector3 playerPos, Vector3 playerRot)
+    {
+        Vector3 playerDistFromOrigin = playerPos - playerOrigin;
+        Vector3 guardDistFromOrigin = guard.transform.position - guardOrigin;
+
+        if (mirror)
+        {
+            guard.transform.Translate(new Vector3(-guardDistFromOrigin[0] - playerDistFromOrigin[0], -guardDistFromOrigin[1] + playerDistFromOrigin[1], -guardDistFromOrigin[2] + playerDistFromOrigin[2]), Space.World);
+            guard.transform.rotation = Quaternion.Euler(-playerRot);
+        }
+        else //match
+        {
+            guard.transform.Translate(playerDistFromOrigin - guardDistFromOrigin, Space.World);
+            guard.transform.rotation = Quaternion.Euler(playerRot);
+        }
+
+    }
+
 }
