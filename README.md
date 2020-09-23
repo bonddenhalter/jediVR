@@ -5,6 +5,8 @@ We did the bonus points on part 2 and 3. Please note that for toggling rotation 
 
 The tab key will not reset to the global origin, but rather a central position in the room that provides a good view of the guard cube.
 
+The guard cube will match or mirror the movement of the PlayerController. This design choice was chosen for a seated VR experience.
+
 Assets:
 Stone Wall - https://assetstore.unity.com/packages/2d/textures-materials/brick/18-high-resolution-wall-textures-12567
 
