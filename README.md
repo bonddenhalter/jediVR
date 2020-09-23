@@ -11,12 +11,12 @@ Stone Wall - https://assetstore.unity.com/packages/2d/textures-materials/brick/1
 We have all contributed to this code in an equitable manner and agree that, to the best of our knowledge, it accurately represents our understanding for the assignment.
 
 Team Members:
-Rachel Berghout
-Bond Denhalter
-Hunter Finney
-Amir Nazem
-Anh Tran
-Dana Ware
+Rachel Berghout\
+Bond Denhalter\
+Hunter Finney\
+Amir Nazem\
+Anh Tran\
+Dana Ware\
 CS 6360
 
 
