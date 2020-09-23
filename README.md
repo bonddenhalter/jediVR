@@ -1,5 +1,7 @@
 # jediVR
+Mini Project for Jedi team in CS 6360
 
+We did the bonus points on part 2 and 3. Please note that for toggling rotation tracking, we mapped that to the "O" key rather than the "R" key, because the "R" key was already doing something else.
 
 The tab key will not reset to the global origin, but rather a central position in the room that provides a good view of the guard cube.
 
@@ -16,4 +18,5 @@ Dana Ware
 
 CS 6360
 =======
+>>>>>>> d1e0a9e6ce7005dfa8fac65321796f596e2e010c
 
