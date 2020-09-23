@@ -18,5 +18,24 @@ Dana Ware
 
 CS 6360
 =======
+The guard cube will match or mirror the movement of the PlayerController. This design choice was chosen for a seated VR experience.
+
+Assets:
+
+Stone Wall - https://assetstore.unity.com/packages/2d/textures-materials/brick/18-high-resolution-wall-textures-12567
+
+Car - https://assetstore.unity.com/packages/3d/vehicles/land/sports-car-model-and-shader-15813
+
+We have all contributed to this code in an equitable manner and agree that, to the best of our knowledge, it accurately represents our understanding for the assignment.
+
+Team Members:\
+Rachel Berghout\
+Bond Denhalter\
+Hunter Finney\
+Amir Nazem\
+Anh Tran\
+Dana Ware\
+CS 6360
+
 >>>>>>> d1e0a9e6ce7005dfa8fac65321796f596e2e010c
 
