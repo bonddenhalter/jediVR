@@ -765,6 +765,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeSinceLastSwitch: 0
   scoreboard: {fileID: 1000204673}
+  oldBox: {fileID: 438081373}
 --- !u!1001 &974261799
 PrefabInstance:
   m_ObjectHideFlags: 0

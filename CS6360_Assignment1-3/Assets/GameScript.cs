@@ -8,6 +8,7 @@ public class GameScript : MonoBehaviour
 
     public float timeSinceLastSwitch;
     public Text scoreboard;
+    public GameObject oldBox;
 
     private string[] boxNames = { "Box 1", "Box 2", "Box 3", "Box 4" };
     private const int ON_INTENSITY = 10;
@@ -50,16 +51,25 @@ public class GameScript : MonoBehaviour
 
     public void SwitchLightRandomly() //Note: I do not currently make sure that the new random light is not the one that was just on.
     {
+ 
         //turn all lights off
         foreach (string boxName in boxNames)
         {
+            
             GameObject box = GameObject.Find(boxName);
+            if (box.GetComponentInChildren<Light>().intensity != 0)
+            {
+                oldBox = box;
+            }
             Light light = box.GetComponentInChildren<Light>();
             light.intensity = 0;
         }
-
-        //turn on random light
         GameObject randomBox = GameObject.Find(boxNames[Random.Range(0, boxNames.Length)]);
+        //turn on random light
+        while (randomBox == oldBox)
+        {
+            randomBox = GameObject.Find(boxNames[Random.Range(0, boxNames.Length)]);
+        }
         Light randomlight = randomBox.GetComponentInChildren<Light>();
         randomlight.intensity = ON_INTENSITY;
     }
