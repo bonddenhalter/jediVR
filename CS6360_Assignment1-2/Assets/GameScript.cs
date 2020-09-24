@@ -49,7 +49,6 @@ public class GameScript : MonoBehaviour
         OVRInput.FixedUpdate(); //needed to get Oculus controller input
     }
 
-    public void SwitchLightRandomly() //Note: I do not currently make sure that the new random light is not the one that was just on.
     {
         //turn all lights off
         foreach (string boxName in boxNames)
@@ -75,7 +74,6 @@ public class GameScript : MonoBehaviour
 
     public void ScorePoint()
     {
-        print("score point");
         points++;
         scoreboard.text = "Score: " + points;
     }
