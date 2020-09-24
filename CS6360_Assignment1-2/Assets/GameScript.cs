@@ -49,6 +49,7 @@ public class GameScript : MonoBehaviour
         OVRInput.FixedUpdate(); //needed to get Oculus controller input
     }
 
+    public void SwitchLightRandomly() 
     {
         //turn all lights off
         foreach (string boxName in boxNames)
