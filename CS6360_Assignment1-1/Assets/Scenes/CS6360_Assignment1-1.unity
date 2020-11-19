@@ -1785,10 +1785,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Bond Denhalter: u0771584\nHunter Finney: u\nDana Ware: u1138040\nAnh Tran:
-    u1316642\nRachel Berghout: u1302108\nAmir Nazem: u\n\nControls: \nMovement: WASD
-    / Controller Analogue Stick\nLight Switch: TAB\nSwitch to Room 1: 1\nSwitch to
-    Room 2: 2\nQuit: ESC\n\n\n"
+  m_Text: "Bond Denhalter: u0771584\nHunter Finney: u1319765\nDana Ware: u1138040\nAnh
+    Tran: u1316642\nRachel Berghout: u1302108\nAmir Nazem: u\n\nControls: \nMovement:
+    WASD / Controller Analogue Stick\nLight Switch: TAB\nSwitch to Room 1: 1\nSwitch
+    to Room 2: 2\nQuit: ESC\n\n\n"
 --- !u!222 &1750448606
 CanvasRenderer:
   m_ObjectHideFlags: 0
