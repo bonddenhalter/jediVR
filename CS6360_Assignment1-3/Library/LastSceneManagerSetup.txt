@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/SampleScene.unity
+- path: Assets/Scenes/CS6360_Assignment1-3.unity
   isLoaded: 1
   isActive: 1
